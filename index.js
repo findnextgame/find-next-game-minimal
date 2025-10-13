@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/testdb');
+const gamesRouter = require('./routes/games');
+app.use('/api/games', gamesRouter);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Find Next Game API is running!' });
